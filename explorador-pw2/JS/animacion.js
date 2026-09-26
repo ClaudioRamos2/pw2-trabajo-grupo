@@ -25,6 +25,7 @@ function crearHTML(estudio) {
       <p class="estudio-resumen">${estudio.resumen}</p>
       <p class="estudio-hallazgo"><strong>Hallazgo:</strong> ${estudio.hallazgoPrincipal}</p>
       <a class="estudio-link" href="${estudio.urlFuente}" target="_blank">Ver estudio →</a>
+      <img class="estudio-imagen" src="${estudio.imagen}" alt="${estudio.titulo}">
     </section>
   `;
 }
