@@ -21,7 +21,7 @@
     "urlFuente": "https://www.nasa.gov/",
     "nombreFuente": "NASA",
     "tipoEstudio": "Biología vegetal",
-    "imagen": ""
+    "imagen": "assets/images/plantas.jpg"
   },
   {
     "id": 2,
@@ -45,7 +45,7 @@
     "urlFuente": "https://www.nasa.gov/",
     "nombreFuente": "NASA",
     "tipoEstudio": "Salud humana",
-    "imagen": ""
+    "imagen": "assets/images/densidadosea.jpg"
   },
   {
     "id": 3,
@@ -69,7 +69,7 @@
     "urlFuente": "https://www.nasa.gov/",
     "nombreFuente": "NASA",
     "tipoEstudio": "Microbiología",
-    "imagen": ""
+    "imagen": "assets/images/migroorganismos.jpg"
   },
   {
     "id": 4,
@@ -93,7 +93,7 @@
     "urlFuente": "https://www.nasa.gov/",
     "nombreFuente": "NASA",
     "tipoEstudio": "Salud humana",
-    "imagen": ""
+    "imagen": "assets/images/ritmos.jpg"
   },
   {
     "id": 5,
@@ -117,7 +117,7 @@
     "urlFuente": "https://www.nasa.gov/",
     "nombreFuente": "NASA",
     "tipoEstudio": "Biología vegetal",
-    "imagen": ""
+    "imagen": "assets/images/radiacionplantas"
   },
   {
     "id": 6,
@@ -141,7 +141,7 @@
     "urlFuente": "https://www.nasa.gov/",
     "nombreFuente": "NASA",
     "tipoEstudio": "Salud humana",
-    "imagen": ""
+    "imagen": "assets/images/efectosfisiologicos.jpg"
   },
   {
     "id": 7,
@@ -165,7 +165,7 @@
     "urlFuente": "https://www.nasa.gov/",
     "nombreFuente": "NASA",
     "tipoEstudio": "Biología vegetal",
-    "imagen": ""
+    "imagen": "assets/images/cultivos.jpg"
   },
   {
     "id": 8,
@@ -189,7 +189,7 @@
     "urlFuente": "https://www.nasa.gov/",
     "nombreFuente": "NASA",
     "tipoEstudio": "Salud humana",
-    "imagen": ""
+    "imagen": "assets/images/bienestar.jpg"
   },
   {
     "id": 9,
@@ -213,7 +213,7 @@
     "urlFuente": "https://www.nasa.gov/",
     "nombreFuente": "NASA",
     "tipoEstudio": "Microbiología",
-    "imagen": ""
+    "imagen": "assets/images/naves.jpg"
   },
   {
     "id": 10,
@@ -237,6 +237,6 @@
     "urlFuente": "https://www.nasa.gov/",
     "nombreFuente": "NASA",
     "tipoEstudio": "Radiobiología",
-    "imagen": ""
+    "imagen": "assets/images/esposicion.jpg"
   }
 ]
