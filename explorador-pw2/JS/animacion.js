@@ -6,15 +6,16 @@ const resultados = document.getElementById('resultados');
 let estudios = [];
 
 
-fetch('estudios.json')
+fetch('data/estudios.json')
   .then((respuesta) => respuesta.json())
   .then((datos) => {
-    estudios = datos;   
-    pintar([]);        
+    estudios = datos;
+    pintar([]);
   })
   .catch((error) => {
     console.error('No se pudo cargar estudios.json:', error);
   });
+
 
 function crearHTML(estudio) {
   return `
