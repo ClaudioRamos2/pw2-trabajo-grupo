@@ -21,7 +21,7 @@
     "urlFuente": "https://www.nasa.gov/",
     "nombreFuente": "NASA",
     "tipoEstudio": "Biología vegetal",
-    "imagen": "assets/images/plantas.jpg"
+    "imagen": "public/plantas.jpg"
   },
   {
     "id": 2,
@@ -45,7 +45,7 @@
     "urlFuente": "https://www.nasa.gov/",
     "nombreFuente": "NASA",
     "tipoEstudio": "Salud humana",
-    "imagen": "assets/images/densidadosea.jpg"
+    "imagen": "public/densidadosea.jpg"
   },
   {
     "id": 3,
@@ -69,7 +69,7 @@
     "urlFuente": "https://www.nasa.gov/",
     "nombreFuente": "NASA",
     "tipoEstudio": "Microbiología",
-    "imagen": "assets/images/migroorganismos.jpg"
+    "imagen": "public/migroorganismos.jpg"
   },
   {
     "id": 4,
@@ -93,7 +93,7 @@
     "urlFuente": "https://www.nasa.gov/",
     "nombreFuente": "NASA",
     "tipoEstudio": "Salud humana",
-    "imagen": "assets/images/ritmos.jpg"
+    "imagen": "public/ritmos.jpg"
   },
   {
     "id": 5,
@@ -117,7 +117,7 @@
     "urlFuente": "https://www.nasa.gov/",
     "nombreFuente": "NASA",
     "tipoEstudio": "Biología vegetal",
-    "imagen": "assets/images/radiacionplantas"
+    "imagen": "public/radiacionplantas"
   },
   {
     "id": 6,
@@ -141,7 +141,7 @@
     "urlFuente": "https://www.nasa.gov/",
     "nombreFuente": "NASA",
     "tipoEstudio": "Salud humana",
-    "imagen": "assets/images/efectosfisiologicos.jpg"
+    "imagen": "public/efectosfisiologicos.jpg"
   },
   {
     "id": 7,
@@ -165,7 +165,7 @@
     "urlFuente": "https://www.nasa.gov/",
     "nombreFuente": "NASA",
     "tipoEstudio": "Biología vegetal",
-    "imagen": "assets/images/cultivos.jpg"
+    "imagen": "public/cultivos.jpg"
   },
   {
     "id": 8,
@@ -189,7 +189,7 @@
     "urlFuente": "https://www.nasa.gov/",
     "nombreFuente": "NASA",
     "tipoEstudio": "Salud humana",
-    "imagen": "assets/images/bienestar.jpg"
+    "imagen": "public/bienestar.jpg"
   },
   {
     "id": 9,
@@ -213,7 +213,7 @@
     "urlFuente": "https://www.nasa.gov/",
     "nombreFuente": "NASA",
     "tipoEstudio": "Microbiología",
-    "imagen": "assets/images/naves.jpg"
+    "imagen": "public/naves.jpg"
   },
   {
     "id": 10,
@@ -237,6 +237,6 @@
     "urlFuente": "https://www.nasa.gov/",
     "nombreFuente": "NASA",
     "tipoEstudio": "Radiobiología",
-    "imagen": "assets/images/esposicion.jpg"
+    "imagen": "public/esposicion.jpg"
   }
 ]
