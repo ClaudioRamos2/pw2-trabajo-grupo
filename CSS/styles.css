@@ -12,7 +12,18 @@ header .top-bar {
     z-index: 1000;
     box-sizing: border-box;
 }
+header .brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
 
+header .brand-section h1 {
+    color: #ffffff;
+    font-size: 1.1rem; /* bajado para que quepan los dos */
+    margin: 0;
+    line-height: 1.2;
+}
 header .hmb-button {
     position: static; 
     width: 45px;
