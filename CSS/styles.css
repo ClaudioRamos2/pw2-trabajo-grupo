@@ -1,8 +1,20 @@
 * {
     box-sizing: border-box;
- 
- 
+
 }
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+    padding: 0px;
+    margin: 0px;
+    min-height: 100vh;
+}
+
+html {
+    min-height: 100%;
+}
+
 header .top-bar {
     position: fixed;
     top: 0;
