@@ -1,9 +1,16 @@
+
+:root {
+    --nav-w: clamp(190px, 58vw, 250px); /* ancho del menú */
+    --barra: 70px;                       /* alto de la top-bar */
+}
+
 * {
     box-sizing: border-box;
 }
 
 html {
     min-height: 100%;
+    overflow-x: hidden;
 }
 
 body {
@@ -11,10 +18,17 @@ body {
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
-    padding-top: 70px; /* altura de la top-bar fija */
+    padding-top: var(--barra);
     background-color: #0d1117;
     color: #e6edf3;
     font-family: system-ui, sans-serif;
+    overflow-x: hidden;
+    transition: padding-left 0.3s ease-in-out;
+}
+
+/* Con el menú abierto el contenido se recorre y se adapta al espacio que queda */
+body.menu-abierto {
+    padding-left: var(--nav-w);
 }
 
 main {
@@ -29,6 +43,7 @@ main h1 {
     font-size: 1.4rem;
     line-height: 1.2;
     margin: 0 0 1rem;
+    overflow-wrap: anywhere;
 }
 
 img {
@@ -40,7 +55,7 @@ header .top-bar {
     top: 0;
     left: 0;
     width: 100%;
-    height: 70px;
+    height: var(--barra);
     background-color: #0d1117;
     display: flex;
     align-items: center;
@@ -74,7 +89,7 @@ header .brand-section {
     display: flex;
     align-items: center;
     gap: 0.6rem;
-    min-width: 0; /* permite que el texto se encoja en pantallas angostas */
+    min-width: 0;
 }
 
 header .brand-section img {
@@ -105,7 +120,7 @@ header .brand-text h1 {
     text-overflow: ellipsis;
 }
 
-/* El subtítulo no cabe en móvil: se muestra desde 600px */
+/* El subtítulo se muestra desde 600px */
 header .brand-text h1:nth-child(2) {
     display: none;
     font-size: 0.8rem;
@@ -113,16 +128,17 @@ header .brand-text h1:nth-child(2) {
     color: #8b949e;
 }
 
-/* ---------- Menú lateral ---------- */
+/* =========================================
+   MENÚ LATERAL CON CHECKS
+   ========================================= */
 header nav {
     position: fixed;
-    top: 70px;
+    top: var(--barra);
     left: 0;
-    width: 80%;
-    max-width: 280px;
-    height: calc(100vh - 70px);
+    width: var(--nav-w);
+    height: calc(100vh - var(--barra));
     background-color: #161B22;
-    padding: 1.5rem 1rem;
+    padding: 1.2rem 1rem;
     overflow-y: auto;
     z-index: 1100;
     transform: translateX(-100%);
@@ -133,28 +149,80 @@ header nav.active {
     transform: translateX(0);
 }
 
-header nav ul {
-    list-style: none;
+.filtro-grupo {
+    border: none;
+    margin: 0 0 1.2rem;
     padding: 0;
-    margin: 0;
+    min-width: 0;
+}
+
+.nav-titulo {
+    padding: 0;
+    margin: 0 0 0.6rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #8b949e;
+}
+
+.filtro-opcion {
     display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-}
-
-header nav a {
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.7rem 0.5rem;
+    border-radius: 6px;
     color: #eee;
-    text-decoration: none;
-    display: block;
-    padding: 0.8rem 0.6rem; /* área táctil cómoda */
-    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.95rem;
 }
 
-header nav a:hover {
+.filtro-opcion:hover {
     background-color: #343f4e;
 }
 
+.filtro-opcion input {
+    width: 1.1rem;
+    height: 1.1rem;
+    flex-shrink: 0;
+    accent-color: #39FF14;
+    cursor: pointer;
+}
 
+.filtro-opcion:has(input:checked) {
+    background-color: #21262d;
+    color: #39FF14;
+}
+
+.filtro-texto {
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.nav-cantidad {
+    color: #8b949e;
+    font-size: 0.85em;
+}
+
+.btn-limpiar {
+    width: 100%;
+    padding: 0.7rem;
+    background: transparent;
+    color: #39FF14;
+    border: 1px solid #39FF14;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.btn-limpiar:hover {
+    background-color: #39FF14;
+    color: #0d1117;
+}
+
+/* =========================================
+   BUSCADOR
+   ========================================= */
 #buscador {
     width: 100%;
     padding: 0.9rem 1rem;
@@ -176,13 +244,14 @@ header nav a:hover {
     font-size: 0.9rem;
 }
 
-
+/* =========================================
+   RESULTADOS
+   ========================================= */
 #resultados {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
     gap: 1rem;
 }
-
 
 .card,
 .estudio {
@@ -192,12 +261,14 @@ header nav a:hover {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    min-width: 0;
     padding: 1rem;
+    overflow-wrap: anywhere;
     transition: transform 0.2s, border-color 0.2s;
 }
 
 .card {
-    padding: 0; /* .card usa .card-body con su propio padding */
+    padding: 0;
 }
 
 .card:hover,
@@ -205,10 +276,11 @@ header nav a:hover {
     border-color: #39FF14;
 }
 
-/* La imagen va primero aunque en el HTML esté al final */
+
 .estudio-imagen {
     order: -1;
     width: calc(100% + 2rem);
+    max-width: none;
     margin: -1rem -1rem 1rem;
     height: 180px;
     object-fit: cover;
@@ -269,7 +341,6 @@ header nav a:hover {
     color: #8b949e;
 }
 
-
 footer {
     text-align: center;
     padding: 1.5rem 1rem;
@@ -300,7 +371,6 @@ footer {
     }
 
     #resultados {
-        grid-template-columns: repeat(2, 1fr);
         gap: 1.2rem;
     }
 
@@ -312,6 +382,10 @@ footer {
 
 
 @media (min-width: 900px) {
+    :root {
+        --nav-w: 270px;
+    }
+
     header .top-bar {
         padding: 0 2rem;
         gap: 1rem;
@@ -325,10 +399,6 @@ footer {
         font-size: 1.3rem;
     }
 
-    header nav {
-        width: 250px;
-    }
-
     main {
         padding: 2rem;
     }
@@ -336,12 +406,7 @@ footer {
     main h1 {
         font-size: 2.2rem;
     }
-
-    #resultados {
-        grid-template-columns: repeat(3, 1fr);
-    }
 }
-
 
 @media (min-width: 1200px) {
     main {
