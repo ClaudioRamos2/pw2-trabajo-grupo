@@ -1,18 +1,38 @@
 * {
     box-sizing: border-box;
-
-}
-body {
-    display: flex;
-    flex-direction: column;
-    background-color: aliceblue;
-    padding: 0px;
-    margin: 0px;
-    min-height: 100vh;
 }
 
 html {
     min-height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding-top: 70px; /* altura de la top-bar fija */
+    background-color: #0d1117;
+    color: #e6edf3;
+    font-family: system-ui, sans-serif;
+}
+
+main {
+    flex: 1;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.2rem 1rem;
+}
+
+main h1 {
+    font-size: 1.4rem;
+    line-height: 1.2;
+    margin: 0 0 1rem;
+}
+
+img {
+    max-width: 100%;
 }
 
 header .top-bar {
@@ -25,24 +45,11 @@ header .top-bar {
     display: flex;
     align-items: center;
     padding: 0 1rem;
-    gap: 1rem;
+    gap: 0.75rem;
     z-index: 1000;
-    box-sizing: border-box;
-}
-header .brand-text {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
 }
 
-header .brand-section h1 {
-    color: #ffffff;
-    font-size: 1.1rem; /* bajado para que quepan los dos */
-    margin: 0;
-    line-height: 1.2;
-}
 header .hmb-button {
-    position: static; 
     width: 45px;
     height: 45px;
     background: transparent;
@@ -57,7 +64,7 @@ header .hmb-button {
 }
 
 header .hmb-button div {
-    width: 2.2rem;
+    width: 1.8rem;
     height: 4px;
     background-color: #39FF14;
     border-radius: 3px;
@@ -66,30 +73,56 @@ header .hmb-button div {
 header .brand-section {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.6rem;
+    min-width: 0; /* permite que el texto se encoja en pantallas angostas */
 }
 
 header .brand-section img {
-    height: 45px;
+    height: 38px;
     width: auto;
     border-radius: 4px;
 }
 
-header .brand-section h1 {
-    color: #ffffff;
-    font-size: 1.4rem;
-    margin: 0;
+/* Oculta el logo mientras no tenga ruta (src vacío) */
+header .brand-section img[src=""] {
+    display: none;
 }
 
+header .brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    min-width: 0;
+}
+
+header .brand-text h1 {
+    color: #ffffff;
+    font-size: 0.95rem;
+    line-height: 1.2;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* El subtítulo no cabe en móvil: se muestra desde 600px */
+header .brand-text h1:nth-child(2) {
+    display: none;
+    font-size: 0.8rem;
+    font-weight: normal;
+    color: #8b949e;
+}
+
+/* ---------- Menú lateral ---------- */
 header nav {
     position: fixed;
     top: 70px;
     left: 0;
-    width: 250px;
+    width: 80%;
+    max-width: 280px;
     height: calc(100vh - 70px);
     background-color: #161B22;
     padding: 1.5rem 1rem;
-    box-sizing: border-box;
     overflow-y: auto;
     z-index: 1100;
     transform: translateX(-100%);
@@ -98,10 +131,6 @@ header nav {
 
 header nav.active {
     transform: translateX(0);
-}
-
-header nav.hidden {
-    display: block;
 }
 
 header nav ul {
@@ -117,7 +146,7 @@ header nav a {
     color: #eee;
     text-decoration: none;
     display: block;
-    padding: 0.6rem;
+    padding: 0.8rem 0.6rem; /* área táctil cómoda */
     border-radius: 4px;
 }
 
@@ -125,32 +154,15 @@ header nav a:hover {
     background-color: #343f4e;
 }
 
-body {
-    padding-top: 70px;
-}
-
-body {
-    background-color: #0d1117;
-    color: #e6edf3;
-    font-family: system-ui, sans-serif;
-    margin: 0;
-}
-
-main {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-}
 
 #buscador {
     width: 100%;
     padding: 0.9rem 1rem;
-    font-size: 1rem;
+    font-size: 1rem; /* 16px evita el zoom automático en iPhone */
     background: #161B22;
     color: #fff;
     border: 2px solid #343f4e;
     border-radius: 8px;
-    box-sizing: border-box;
 }
 
 #buscador:focus {
@@ -161,27 +173,45 @@ main {
 #contador {
     color: #8b949e;
     margin: 1rem 0;
+    font-size: 0.9rem;
 }
+
 
 #resultados {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.2rem;
+    grid-template-columns: 1fr;
+    gap: 1rem;
 }
 
-.card {
+
+.card,
+.estudio {
     background: #161B22;
     border: 1px solid #30363d;
     border-radius: 10px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    padding: 1rem;
     transition: transform 0.2s, border-color 0.2s;
 }
 
-.card:hover {
-    transform: translateY(-3px);
+.card {
+    padding: 0; /* .card usa .card-body con su propio padding */
+}
+
+.card:hover,
+.estudio:hover {
     border-color: #39FF14;
+}
+
+/* La imagen va primero aunque en el HTML esté al final */
+.estudio-imagen {
+    order: -1;
+    width: calc(100% + 2rem);
+    margin: -1rem -1rem 1rem;
+    height: 180px;
+    object-fit: cover;
 }
 
 .card img {
@@ -194,18 +224,27 @@ main {
     padding: 1rem;
 }
 
-.card h2 {
+.card h2,
+.estudio-titulo {
     font-size: 1.1rem;
     margin: 0.6rem 0;
 }
 
-.card p {
+.card p,
+.estudio p {
     font-size: 0.9rem;
     line-height: 1.5;
     color: #c9d1d9;
 }
 
-.card a {
+.estudio-tags {
+    color: #39FF14 !important;
+    font-size: 0.8rem !important;
+    margin: 0 0 0.5rem;
+}
+
+.card a,
+.estudio-link {
     color: #39FF14;
     font-size: 0.9rem;
 }
@@ -230,14 +269,87 @@ main {
     color: #8b949e;
 }
 
+
 footer {
     text-align: center;
-    padding: 1.5rem;
+    padding: 1.5rem 1rem;
     color: #8b949e;
+    font-size: 0.85rem;
 }
 
-main {
-    flex: 1;
 
+@media (min-width: 600px) {
+    header .brand-section img {
+        height: 45px;
+    }
+
+    header .brand-text h1 {
+        font-size: 1.1rem;
+    }
+
+    header .brand-text h1:nth-child(2) {
+        display: block;
+    }
+
+    main {
+        padding: 1.5rem;
+    }
+
+    main h1 {
+        font-size: 1.8rem;
+    }
+
+    #resultados {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+    }
+
+    .card:hover,
+    .estudio:hover {
+        transform: translateY(-3px);
+    }
 }
 
+
+@media (min-width: 900px) {
+    header .top-bar {
+        padding: 0 2rem;
+        gap: 1rem;
+    }
+
+    header .hmb-button div {
+        width: 2.2rem;
+    }
+
+    header .brand-text h1 {
+        font-size: 1.3rem;
+    }
+
+    header nav {
+        width: 250px;
+    }
+
+    main {
+        padding: 2rem;
+    }
+
+    main h1 {
+        font-size: 2.2rem;
+    }
+
+    #resultados {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+@media (min-width: 1200px) {
+    main {
+        padding: 2.5rem 1rem;
+    }
+
+    .card img,
+    .estudio-imagen {
+        height: 200px;
+    }
+}
